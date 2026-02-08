@@ -16,6 +16,8 @@ public class Menu {
             System.out.println("4. Arrays y Referencias");
             System.out.println("5. Figuras Geometricas");
             System.out.println("6. Gestion de productos");
+            System.out.println("7. Inventario de Arrays");
+            System.out.println("8. Copia de Arrays");
             System.out.println("0. Salir");
             opcion = sc.nextInt();
 
@@ -43,6 +45,14 @@ public class Menu {
                     break;
                 case 6:
                     ejercicioProducto();
+                    pausa();
+                    break;
+                case 7:
+                    ejercicioInventario();
+                    pausa();
+                    break;
+                case 8:
+                    ejercicioCopiaArray();
                     pausa();
                     break;
                     
@@ -126,6 +136,78 @@ public class Menu {
 
     System.out.println("Stock después de vender: " + p.getStock());
     }
+
+    //Ejercicio7
+    public static void ejercicioInventario() {
+
+    // 1. Crear array de tamaño fijo
+    Producto[] inventario = new Producto[5];
+
+    // 2. Inicializar al menos 3 productos
+    inventario[0] = new Producto("Laptop", 50000, 5);
+    inventario[1] = new Producto("Mouse", 800, 0);
+    inventario[2] = new Producto("Teclado", 1500, 3);
+
+    double valorTotal = 0;
+
+    System.out.println("Productos con stock disponible:");
+
+    // 3. Recorrer el array
+    for (Producto p : inventario) {
+
+        if (p != null) { // evita error por posiciones vacias
+
+            // 4. Calcular valor total
+            valorTotal += p.getPrecio() * p.getStock();
+
+            // 5. Mostrar solo si hay stock
+            if (p.getStock() > 0) {
+                System.out.println(
+                    p.getNombre() +
+                    " | Precio: " + p.getPrecio() +
+                    " | Stock: " + p.getStock()
+                );
+            }
+        }
+    }
+
+    System.out.println("Valor total del inventario: " + valorTotal);
+    }
+
+    //Ejercicio8
+    public static void ejercicioCopiaArrays() {
+
+    // Array original
+    int[] original = {10, 20, 30};
+
+    // Copia usando clone()
+    int[] copia = original.clone();
+
+    // Modificamos la copia
+    copia[1] = 99;
+
+    System.out.println("Array original:");
+    for (int n : original) {
+        System.out.print(n + " ");
+    }
+
+    System.out.println("\nArray copia:");
+    for (int n : copia) {
+        System.out.print(n + " ");
+    }
+
+    /*
+     EXPLICACION:
+     clone() crea un nuevo array en otra posicion de memoria
+     Por eso al modificar la copia el original NO cambia
+
+     Esto se considera una copia profunda para tipos primitivos
+     Si fueran objetos (Producto[] por ejemplo)
+     solo copiaría las referencias y sería copia superficial
+    */
+    }
+
+
 
     
     
