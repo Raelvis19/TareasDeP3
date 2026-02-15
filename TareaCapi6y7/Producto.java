@@ -23,7 +23,7 @@ public class Producto {
         return stock;
     }
 
-    // SETTERS CON VALIDACIÓN
+    // SETTERS CON VALIDACION
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
